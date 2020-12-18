@@ -65,6 +65,7 @@ class DAOUsuario:
     def CompararDatos(self,data,login,clave):
         con = DAOUsuario.connect(self)
         cursor = con.cursor()
+        yes=10000
 
         try:
             #Obtenemos los nombres de usuario del los integrantes de la base de datos
@@ -73,7 +74,7 @@ class DAOUsuario:
             #Obtenemos las contrasenas de los usuario de los integrantes de la base de datos
             cursor.execute("SELECT clave FROM usuario")
             contrasena = cursor.fetchall()
-            #Para 
+            #Chequeamos si coincide
             for i in range(len(names)): #for i in range(2): []
                 nombre="('"+str(login)+"',)"
                 contra="('"+str(clave)+"',)"

@@ -50,12 +50,12 @@ def anadirusuario():
 @app.route(ruta+'/verificarusuario', methods = ['POST', 'GET'])
 def verificarusuario():
     if request.method == 'POST' and request.form['save']:
-        #guardamos los datos que necesitamos para la funcion de dao
+        #guardamos los datos que necesitamos para la funcion de dao 
         login = request.form['login']
         clave = request.form['clave']
         #Validamos contrasena y correo y si funciona devuelve numero de fila i
         i=db.CompararDatos(request.form,login=login,clave=clave)
-        #obtenemos el tipo con i
+        #Obtenemos el tipo con i
         tipo=db.BuscarTipo(request.form,numero=i)
         if tipo=="('Profesor',)": #Si es un profesor, redireccionamos a la url para profesor
             return redirect(url_for('paginaprofesor'))
