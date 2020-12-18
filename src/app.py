@@ -36,11 +36,10 @@ def registrarse():
 @app.route(ruta+'/anadirusuario', methods = ['POST', 'GET'])
 def anadirusuario():
     if request.method == 'POST' and request.form['save']:
-        print(request.form)
         if db.insert(request.form):
-            print("Nuevo usuario creado")
+            flash("Nuevo usuario creado")
         else:
-            print("ERROR, al crear usuario")
+            flash("ERROR, al crear usuario")
 
         return redirect(url_for('principal'))
     else:
